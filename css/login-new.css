@@ -1,0 +1,397 @@
+/* EMERGENCY CSS FIX - This should work immediately */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* IMPORTANT: Red background to test if CSS loads */
+body {
+    background: red !important;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* If you see RED background, CSS is working! */
+.login-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1000px;
+    width: 100%;
+    min-height: 500px;
+}
+
+.left-side {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 30px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.brand-logo {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.brand-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.brand-subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.features-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+}
+
+.feature-icon {
+    font-size: 1.2rem;
+}
+
+.feature-text h4 {
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+.feature-text p {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.right-side {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-container {
+    max-width: 350px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-header h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.alert {
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 1rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0;
+    font-size: 0.85rem;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.forgot-link {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.login-btn:hover {
+    transform: translateY(-1px);
+}
+
+.demo-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.demo-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.demo-header h3 {
+    color: #333;
+    font-size: 1rem;
+}
+
+.demo-account {
+    background: white;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+}
+
+.demo-role {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.role-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+}
+
+.role-icon.admin {
+    background: linear-gradient(135deg, #e53e3e, #c53030);
+}
+
+.role-info h4 {
+    color: #333;
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+}
+
+.role-info p {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.demo-credentials {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.credential-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.credential-label {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.credential-value {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.credential-value:hover {
+    background: rgba(102, 126, 234, 0.2);
+}
+
+.demo-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 5px;
+    margin-top: 8px;
+}
+
+.demo-note p {
+    font-size: 0.8rem;
+    color: #667eea;
+    margin: 0;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.form-footer p {
+    color: #666;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.link-secondary {
+    color: #999;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.link-secondary:hover {
+    color: #666;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    body {
+        background: blue !important; /* Blue on mobile to test responsive */
+    }
+    
+    .login-container {
+        grid-template-columns: 1fr;
+        margin: 10px;
+    }
+    
+    .left-side {
+        padding: 20px;
+    }
+    
+    .brand-title {
+        font-size: 1.5rem;
+    }
+    
+    .right-side {
+        padding: 20px;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+}

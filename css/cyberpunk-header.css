@@ -1,0 +1,273 @@
+/* Cyberpunk Neon Theme for Header */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+/* Override Header with Cyberpunk Theme */
+header {
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%) !important;
+    backdrop-filter: blur(25px) !important;
+    border-bottom: 2px solid transparent !important;
+    border-image: linear-gradient(90deg, #00d4ff, #ff00d4, #00ff88) 1 !important;
+    padding: 1.5rem 2rem !important;
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3), 0 0 50px rgba(255, 0, 212, 0.2) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 50 !important;
+}
+
+/* Header Container */
+header .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Ensure body has proper padding for sticky header */
+body {
+    padding-top: 0 !important;
+}
+
+/* Main content spacing */
+main {
+    margin-top: 2rem !important;
+}
+
+/* Cyberpunk Title */
+header h1 {
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 1.75rem !important;
+    font-weight: 900 !important;
+    background: linear-gradient(135deg, #00d4ff 0%, #ff00d4 50%, #00ff88 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    text-transform: uppercase !important;
+    letter-spacing: 3px !important;
+    margin-bottom: 1rem !important;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.5) !important;
+    animation: neonPulse 2s ease-in-out infinite !important;
+}
+
+@keyframes neonPulse {
+    0%, 100% {
+        filter: brightness(1);
+        text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+    }
+    50% {
+        filter: brightness(1.2);
+        text-shadow: 0 0 40px rgba(0, 212, 255, 0.8), 0 0 60px rgba(255, 0, 212, 0.6);
+    }
+}
+
+/* Cyberpunk Navigation */
+nav {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    flex-wrap: wrap !important;
+}
+
+nav a {
+    color: #00d4ff !important;
+    text-decoration: none !important;
+    padding: 0.75rem 1.25rem !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-family: 'Orbitron', sans-serif !important;
+    text-transform: uppercase !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 1px !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background: rgba(0, 212, 255, 0.1) !important;
+    border: 1px solid rgba(0, 212, 255, 0.3) !important;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.2) !important;
+}
+
+nav a::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.4), transparent) !important;
+    transition: left 0.5s ease !important;
+}
+
+nav a:hover::before {
+    left: 100% !important;
+}
+
+nav a:hover {
+    color: #ffffff !important;
+    background: rgba(0, 212, 255, 0.2) !important;
+    border-color: #00d4ff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(0, 212, 255, 0.3) !important;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8) !important;
+}
+
+/* Welcome Badge - Cyberpunk Style */
+nav span {
+    margin-left: auto !important;
+    font-weight: 700 !important;
+    font-family: 'Orbitron', sans-serif !important;
+    padding: 0.75rem 1.5rem !important;
+    background: linear-gradient(135deg, #00d4ff 0%, #ff00d4 100%) !important;
+    color: #0a0e27 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(255, 0, 212, 0.4) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-size: 0.85rem !important;
+    animation: badgePulse 3s ease-in-out infinite !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(255, 0, 212, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 212, 255, 0.8), 0 0 60px rgba(255, 0, 212, 0.6);
+    }
+}
+
+/* Glitch Effect on Hover */
+header h1:hover {
+    animation: glitch 0.3s ease-in-out !important;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none !important;
+    background: rgba(0, 212, 255, 0.2) !important;
+    border: 1px solid rgba(0, 212, 255, 0.5) !important;
+    color: #00d4ff !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 0.9rem !important;
+    margin: 0.5rem auto !important;
+    width: fit-content !important;
+}
+
+.menu-toggle:hover {
+    background: rgba(0, 212, 255, 0.3) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header {
+        padding: 0.75rem 0.5rem !important;
+        position: relative !important;
+        top: auto !important;
+        z-index: 10 !important;
+    }
+    
+    header .container {
+        padding: 0 !important;
+    }
+    
+    header h1 {
+        font-size: 1rem !important;
+        letter-spacing: 1.5px !important;
+        margin-bottom: 0.5rem !important;
+        text-align: center !important;
+    }
+    
+    .menu-toggle {
+        display: block !important;
+    }
+    
+    nav {
+        flex-direction: column !important;
+        gap: 0.4rem !important;
+        align-items: stretch !important;
+        width: 100% !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        transition: max-height 0.3s ease-out !important;
+    }
+    
+    nav.menu-open {
+        max-height: 500px !important;
+        margin-top: 0.5rem !important;
+    }
+    
+    nav span {
+        margin-left: 0 !important;
+        order: -1 !important;
+        text-align: center !important;
+        width: 100% !important;
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.7rem !important;
+    }
+    
+    nav a {
+        text-align: center !important;
+        width: 100% !important;
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.7rem !important;
+    }
+    
+    main {
+        margin-top: 1rem !important;
+        position: relative !important;
+        z-index: 1 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 0.5rem 0.25rem !important;
+        position: relative !important;
+        top: auto !important;
+        z-index: 10 !important;
+    }
+    
+    header h1 {
+        font-size: 0.85rem !important;
+        letter-spacing: 1px !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    nav {
+        gap: 0.3rem !important;
+    }
+    
+    nav a, nav span {
+        padding: 0.4rem 0.5rem !important;
+        font-size: 0.65rem !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    main {
+        margin-top: 0.5rem !important;
+        position: relative !important;
+        z-index: 1 !important;
+    }
+}

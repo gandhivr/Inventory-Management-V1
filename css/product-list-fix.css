@@ -1,0 +1,80 @@
+/* Product List Navigation Fix - Prevents overlay on mobile */
+
+/* Ensure header doesn't cover content */
+header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 50 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+}
+
+/* Ensure navigation displays inline, not as overlay */
+header nav {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    position: relative !important;
+    z-index: auto !important;
+}
+
+/* Ensure main content is below header */
+main {
+    position: relative !important;
+    z-index: 1 !important;
+    margin-top: 0 !important;
+}
+
+/* Product grid should be visible */
+.product-grid {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Product cards should be visible */
+.product-card {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+    header {
+        position: sticky !important;
+        padding: 1rem !important;
+    }
+    
+    header nav {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+    }
+    
+    header nav a {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.85rem !important;
+    }
+    
+    header nav span {
+        width: 100% !important;
+        text-align: center !important;
+        margin-bottom: 0.5rem !important;
+        order: -1 !important;
+    }
+    
+    main {
+        margin: 1rem !important;
+        padding: 1.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    header nav a {
+        padding: 0.5rem !important;
+        font-size: 0.8rem !important;
+    }
+}

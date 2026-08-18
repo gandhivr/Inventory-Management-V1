@@ -1,0 +1,481 @@
+/* Analytics Dashboard - Clean Professional Design */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f8fafc;
+    min-height: 100vh;
+    color: #1a202c;
+    line-height: 1.6;
+}
+
+/* Navigation */
+.navbar-custom {
+    background: white !important;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #2d3748 !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #4a5568 !important;
+}
+
+.nav-link:hover {
+    color: #667eea !important;
+}
+
+/* Back to Dashboard Button - Moved to header area */
+.back-to-dashboard {
+    background: #667eea;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    margin-bottom: 16px;
+}
+
+.back-to-dashboard:hover {
+    background: #5a67d8;
+    color: white;
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* Page Header */
+.analytics-header {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    margin: 20px;
+    padding: 24px;
+}
+
+.analytics-header h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 0.5rem;
+}
+
+.analytics-header .lead {
+    font-size: 1rem;
+    color: #718096;
+    font-weight: 400;
+}
+
+/* Chart Cards */
+.chart-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    height: 100%;
+    transition: all 0.2s ease;
+}
+
+.chart-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chart-header {
+    background: #667eea;
+    color: white;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chart-header h5 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.chart-controls .btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+}
+
+.chart-controls .btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.chart-container {
+    padding: 24px;
+    height: 350px;
+    position: relative;
+}
+
+/* Analytics Tables */
+.analytics-table {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    height: 100%;
+    transition: all 0.2s ease;
+}
+
+.analytics-table:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.table-header {
+    background: #667eea;
+    color: white;
+    padding: 20px 24px;
+}
+
+.table-header h5 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.analytics-table .table {
+    margin-bottom: 0;
+}
+
+.analytics-table .table th {
+    background: #f7fafc;
+    color: #4a5568;
+    font-weight: 600;
+    border: none;
+    padding: 12px 16px;
+    font-size: 0.875rem;
+}
+
+.analytics-table .table td {
+    padding: 12px 16px;
+    border-color: #e2e8f0;
+    vertical-align: middle;
+    font-size: 0.875rem;
+}
+
+.analytics-table .table tbody tr:hover {
+    background: #f7fafc;
+}
+
+.rank-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: #667eea;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+/* Fix for table text overflow */
+.analytics-table .table td {
+    padding: 12px 16px;
+    border-color: #e2e8f0;
+    vertical-align: middle;
+    font-size: 0.875rem;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 0;
+}
+
+.analytics-table .table td:first-child {
+    max-width: none;
+}
+
+.analytics-table .table td strong {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Activity Feed */
+.activity-feed {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.activity-feed:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.activity-header {
+    background: #667eea;
+    color: white;
+    padding: 20px 24px;
+}
+
+.activity-header h5 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.activity-timeline {
+    padding: 24px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-item:hover {
+    background: #f7fafc;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 0 -12px;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.activity-icon.activity-new-user {
+    background: #48bb78;
+}
+
+.activity-icon.activity-new-order {
+    background: #4299e1;
+}
+
+.activity-icon.activity-new-product {
+    background: #ed8936;
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-title {
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 2px;
+    font-size: 0.875rem;
+}
+
+.activity-description {
+    color: #4a5568;
+    margin-bottom: 4px;
+    font-size: 0.875rem;
+}
+
+.activity-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 0.75rem;
+}
+
+.activity-time {
+    color: #718096;
+}
+
+.activity-info {
+    color: #667eea;
+    font-weight: 500;
+}
+
+/* Buttons */
+.btn-outline-primary {
+    border-color: #667eea;
+    color: #667eea;
+    font-weight: 500;
+}
+
+.btn-outline-primary:hover {
+    background: #667eea;
+    border-color: #667eea;
+    color: white;
+}
+
+.btn-outline-success {
+    border-color: #48bb78;
+    color: #48bb78;
+    font-weight: 500;
+}
+
+.btn-outline-success:hover {
+    background: #48bb78;
+    border-color: #48bb78;
+    color: white;
+}
+
+/* Icons */
+.fas, .far, .fab {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+}
+
+.alert-danger {
+    background: #fed7d7;
+    color: #c53030;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .back-to-dashboard {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        margin-bottom: 12px;
+    }
+    
+    .analytics-header {
+        margin: 16px;
+        padding: 20px;
+    }
+    
+    .analytics-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .chart-container {
+        padding: 20px;
+        height: 300px;
+    }
+    
+    .chart-header {
+        padding: 16px 20px;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+    
+    .activity-timeline {
+        padding: 20px;
+    }
+    
+    .activity-item {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .activity-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .analytics-header h1 {
+        font-size: 1.25rem;
+    }
+    
+    .chart-container {
+        height: 250px;
+        padding: 16px;
+    }
+    
+    .analytics-table .table th,
+    .analytics-table .table td {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Scrollbar */
+.activity-timeline::-webkit-scrollbar {
+    width: 4px;
+}
+
+.activity-timeline::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.activity-timeline::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 2px;
+}
+
+/* Print */
+@media print {
+    body {
+        background: white !important;
+    }
+    
+    .navbar-custom,
+    .btn,
+    .back-to-dashboard {
+        display: none !important;
+    }
+    
+    .chart-card,
+    .analytics-table,
+    .activity-feed {
+        background: white !important;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    .chart-header,
+    .table-header,
+    .activity-header {
+        background: #f8f9fa !important;
+        color: #333 !important;
+    }
+}

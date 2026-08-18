@@ -1,0 +1,2362 @@
+/* ==========================================
+   UNIFIED CYBERPUNK DASHBOARD
+   Modern Dark Theme with Neon Effects
+   For Admin, Buyer, and Supplier Dashboards
+   ========================================== */
+
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================
+   CSS VARIABLES
+   ========================================== */
+:root {
+    /* Background Colors */
+    --bg-primary: #0a0e27;
+    --bg-secondary: #0f1729;
+    --bg-card: rgba(15, 23, 42, 0.7);
+    --bg-card-hover: rgba(15, 23, 42, 0.9);
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    
+    /* Accent Colors */
+    --cyan: #00f2fe;
+    --pink: #ff006e;
+    --green: #39ff14;
+    --gold: #ffd700;
+    --purple: #b026ff;
+    --orange: #ff6b35;
+    
+    /* Glow Colors */
+    --glow-cyan: rgba(0, 242, 254, 0.6);
+    --glow-pink: rgba(255, 0, 110, 0.6);
+    --glow-green: rgba(57, 255, 20, 0.6);
+    --glow-gold: rgba(255, 215, 0, 0.6);
+    --glow-purple: rgba(176, 38, 255, 0.6);
+    --glow-orange: rgba(255, 107, 53, 0.6);
+    
+    /* Timing */
+    --transition-fast: 150ms;
+    --transition-medium: 300ms;
+    --transition-slow: 600ms;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================
+   RESET & BASE
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1b3e 50%, #0a0e27 100%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Animated Background Grid */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(var(--cyan) 1px, transparent 1px),
+        linear-gradient(90deg, var(--cyan) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.03;
+    animation: gridMove 20s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+/* Scanline Effect */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.1) 3px
+    );
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+}
+
+/* Container */
+.container-fluid, .container {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   NAVIGATION BAR
+   ========================================== */
+.navbar-custom, header {
+    background: rgba(10, 14, 39, 0.9) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 2px solid var(--cyan);
+    box-shadow: 0 0 30px var(--glow-cyan);
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.navbar-brand, header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--cyan) !important;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 30px var(--glow-cyan), 0 0 60px var(--glow-cyan);
+    filter: brightness(1.5);
+    margin-bottom: 1rem;
+}
+
+.navbar-logo {
+    height: 80px !important;
+    width: auto !important;
+    margin-right: 20px !important;
+    filter: drop-shadow(0 0 20px var(--glow-cyan)) brightness(1.2);
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.navbar-brand i, header h1 i {
+    color: var(--cyan);
+    animation: rotate 10s linear infinite;
+    display: inline-block;
+    filter: drop-shadow(0 0 20px var(--glow-cyan));
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.nav-link, nav a {
+    color: var(--text-secondary) !important;
+    font-weight: 600;
+    padding: 10px 20px !important;
+    border-radius: 8px;
+    transition: all var(--transition-medium) var(--ease);
+    position: relative;
+    text-decoration: none;
+}
+
+.nav-link::before, nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--cyan);
+    transition: width var(--transition-medium) var(--ease);
+}
+
+.nav-link:hover, nav a:hover {
+    color: var(--cyan) !important;
+    text-shadow: 0 0 10px var(--glow-cyan);
+}
+
+.nav-link:hover::before, nav a:hover::before {
+    width: 80%;
+}
+
+nav span {
+    margin-left: auto;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 0 30px var(--glow-cyan);
+}
+
+/* ==========================================
+   MAIN CONTENT
+   ========================================== */
+main {
+    padding: 2rem;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    margin: 2rem;
+    border-radius: 24px;
+    border: 2px solid var(--purple);
+    box-shadow: 0 0 40px var(--glow-purple), 0 20px 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 242, 254, 0.1),
+        transparent
+    );
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+main h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-primary) !important;
+    text-shadow: 
+        0 0 20px var(--glow-cyan),
+        0 0 40px var(--glow-pink),
+        0 0 60px var(--glow-purple),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 2.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    filter: brightness(1.3);
+}
+
+/* ==========================================
+   DASHBOARD HEADER
+   ========================================== */
+.dashboard-header, .welcome-section {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 35px 40px;
+    margin-bottom: 30px;
+    border: 2px solid var(--purple);
+    box-shadow: 0 0 40px var(--glow-purple), 0 20px 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-primary) !important;
+    text-shadow: 
+        0 0 20px var(--glow-cyan),
+        0 0 40px var(--glow-pink),
+        0 0 60px var(--glow-purple),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    filter: brightness(1.3);
+}
+
+.welcome-text i {
+    color: var(--gold) !important;
+    text-shadow: 
+        0 0 30px var(--glow-gold),
+        0 0 50px var(--glow-gold);
+    animation: pulse 2s ease-in-out infinite;
+    filter: brightness(1.5);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.lead {
+    color: var(--text-primary) !important;
+    font-size: 1.1rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0.95;
+}
+
+/* ==========================================
+   STATISTICS CARDS
+   ========================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Override inline styles for supplier pages */
+div[style*="background: white"] {
+    background: var(--bg-card) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 2px solid var(--cyan) !important;
+    box-shadow: 0 0 30px var(--glow-cyan) !important;
+}
+
+div[style*="background: white"] h3 {
+    color: var(--text-primary) !important;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3) !important;
+}
+
+div[style*="background: white"] p {
+    color: var(--text-primary) !important;
+}
+
+div[style*="background: white"] small {
+    color: var(--text-secondary) !important;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    padding: 30px;
+    border: 2px solid transparent;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    transition: all var(--transition-medium) var(--ease);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform var(--transition-slow) var(--ease);
+}
+
+.stat-card:hover::before {
+    transform: scale(1);
+}
+
+.stat-card.users, .stat-card:nth-child(1) {
+    border-color: var(--cyan);
+    box-shadow: 0 10px 40px var(--glow-cyan), 0 0 60px rgba(0, 242, 254, 0.3);
+}
+
+.stat-card.products, .stat-card:nth-child(2) {
+    border-color: var(--green);
+    box-shadow: 0 10px 40px var(--glow-green), 0 0 60px rgba(57, 255, 20, 0.3);
+}
+
+.stat-card.orders, .stat-card:nth-child(3) {
+    border-color: var(--pink);
+    box-shadow: 0 10px 40px var(--glow-pink), 0 0 60px rgba(255, 0, 110, 0.3);
+}
+
+.stat-card.revenue, .stat-card:nth-child(4) {
+    border-color: var(--gold);
+    box-shadow: 0 10px 40px var(--glow-gold), 0 0 60px rgba(255, 215, 0, 0.3);
+}
+
+.stat-card:hover {
+    transform: translateY(-15px) scale(1.05);
+}
+
+.stat-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-card .stat-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    margin: 10px 0;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.stat-card p {
+    color: var(--text-primary) !important;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    opacity: 0.95;
+}
+
+/* ==========================================
+   DASHBOARD GRID
+   ========================================== */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.dashboard-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px;
+    border: 2px solid var(--purple);
+    box-shadow: 0 0 40px var(--glow-purple), 0 10px 40px rgba(0, 0, 0, 0.4);
+    transition: all var(--transition-medium) var(--ease);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    height: 100%;
+}
+
+.dashboard-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-medium) var(--ease);
+}
+
+.dashboard-card:hover::before {
+    transform: scaleX(1);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    border-color: var(--cyan);
+    box-shadow: 0 0 50px var(--glow-cyan), 0 25px 70px rgba(0, 0, 0, 0.6);
+}
+
+.dashboard-card h3, .card-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-primary) !important;
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.dashboard-card h3::after, .card-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+}
+
+.card-text {
+    color: var(--text-primary) !important;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* ==========================================
+   BUTTONS
+   ========================================== */
+.btn {
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 32px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all var(--transition-medium) var(--ease);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left var(--transition-slow) var(--ease);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    text-decoration: none;
+}
+
+.btn-primary, .btn-gradient {
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    color: var(--text-primary);
+    box-shadow: 0 0 30px var(--glow-cyan);
+}
+
+.btn-primary:hover, .btn-gradient:hover {
+    box-shadow: 0 0 50px var(--glow-cyan), 0 15px 50px rgba(0, 242, 254, 0.5);
+    color: var(--text-primary);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--green), #00cc00);
+    color: var(--text-primary);
+    box-shadow: 0 0 30px var(--glow-green);
+}
+
+.btn-success:hover {
+    box-shadow: 0 0 50px var(--glow-green), 0 15px 50px rgba(57, 255, 20, 0.5);
+    color: var(--text-primary);
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, var(--orange), #ff4500);
+    color: var(--text-primary);
+    box-shadow: 0 0 30px var(--glow-orange);
+}
+
+.btn-warning:hover {
+    box-shadow: 0 0 50px var(--glow-orange), 0 15px 50px rgba(255, 107, 53, 0.5);
+    color: var(--text-primary);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--pink), #cc0055);
+    color: var(--text-primary);
+    box-shadow: 0 0 30px var(--glow-pink);
+}
+
+.btn-danger:hover {
+    box-shadow: 0 0 50px var(--glow-pink), 0 15px 50px rgba(255, 0, 110, 0.5);
+    color: var(--text-primary);
+}
+
+.btn-info {
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    color: var(--text-primary);
+    box-shadow: 0 0 30px var(--glow-cyan);
+}
+
+.btn-info:hover {
+    box-shadow: 0 0 50px var(--glow-cyan), 0 15px 50px rgba(0, 242, 254, 0.5);
+    color: var(--text-primary);
+}
+
+/* Outline Buttons */
+.btn-outline, .btn-outline-primary, .btn-outline-success, .btn-outline-warning, .btn-outline-danger {
+    background: transparent;
+    border: 2px solid;
+    color: var(--cyan);
+    border-color: var(--cyan);
+}
+
+.btn-outline::before, .btn-outline-primary::before {
+    background: var(--cyan);
+    z-index: -1;
+}
+
+.btn-outline:hover, .btn-outline-primary:hover {
+    color: var(--bg-primary);
+    border-color: var(--cyan);
+    box-shadow: 0 0 30px var(--glow-cyan);
+}
+
+/* ==========================================
+   ITEMS & LISTS
+   ========================================== */
+.order-item, .product-item, .activity-item, .cart-item {
+    background: rgba(0, 242, 254, 0.05);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--cyan);
+    transition: all var(--transition-medium) var(--ease);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-item::before, .product-item::before, .activity-item::before, .cart-item::before {
+    content: '';
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.1), transparent);
+    transition: left var(--transition-slow) var(--ease);
+}
+
+.order-item:hover::before, .product-item:hover::before, .activity-item:hover::before, .cart-item:hover::before {
+    left: 100%;
+}
+
+.order-item:hover, .product-item:hover, .activity-item:hover, .cart-item:hover {
+    background: rgba(0, 242, 254, 0.15);
+    border-left-color: var(--cyan);
+    transform: translateX(10px);
+    box-shadow: 0 0 20px var(--glow-cyan);
+}
+
+.order-info strong, .product-info strong, .cart-item-info strong {
+    color: var(--text-primary) !important;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.order-info p, .product-info p, .cart-item-info p {
+    color: var(--text-primary) !important;
+    opacity: 0.8;
+    margin: 0.25rem 0 0 0;
+    font-size: 0.9rem;
+}
+
+.order-amount strong, .product-stats strong {
+    color: var(--cyan) !important;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-shadow: 0 0 15px var(--glow-cyan);
+}
+
+/* ==========================================
+   STATUS BADGES
+   ========================================== */
+.status-badge, .badge {
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px currentColor;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.status-completed, .bg-success {
+    background: linear-gradient(135deg, var(--green), #00cc00) !important;
+    color: var(--bg-primary) !important;
+}
+
+.status-pending, .bg-warning {
+    background: linear-gradient(135deg, var(--orange), #ff4500) !important;
+    color: var(--bg-primary) !important;
+}
+
+.status-processing, .bg-primary {
+    background: linear-gradient(135deg, var(--cyan), #0080ff) !important;
+    color: var(--bg-primary) !important;
+}
+
+.bg-danger {
+    background: linear-gradient(135deg, var(--pink), #cc0055) !important;
+    color: var(--text-primary) !important;
+}
+
+.bg-info {
+    background: linear-gradient(135deg, var(--cyan), var(--purple)) !important;
+    color: var(--text-primary) !important;
+}
+
+/* ==========================================
+   QUICK ACTIONS
+   ========================================== */
+.quick-actions, .quick-actions-bar {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    padding: 30px;
+    border: 2px solid var(--purple);
+    box-shadow: 0 0 40px var(--glow-purple), 0 10px 40px rgba(0, 0, 0, 0.4);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.quick-actions h3, .quick-actions-bar h6 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-primary) !important;
+    margin-bottom: 25px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.quick-actions-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* ==========================================
+   PRODUCT GRID
+   ========================================== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.product-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid var(--purple);
+    box-shadow: 0 0 30px var(--glow-purple), 0 15px 35px rgba(0, 0, 0, 0.4);
+    transition: all var(--transition-medium) var(--ease);
+}
+
+.product-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--cyan);
+    box-shadow: 0 0 50px var(--glow-cyan), 0 25px 50px rgba(0, 0, 0, 0.6);
+}
+
+.product-card-content {
+    padding: 2rem;
+}
+
+.product-card h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--cyan);
+    text-shadow: 0 0 15px var(--glow-cyan);
+    margin-bottom: 0.75rem;
+}
+
+.product-stock {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+/* ==========================================
+   SCROLLBAR
+   ========================================== */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    border-radius: 6px;
+    box-shadow: 0 0 10px var(--glow-cyan);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    box-shadow: 0 0 15px var(--glow-pink);
+}
+
+/* ==========================================
+   UTILITY CLASSES
+   ========================================== */
+.text-primary {
+    color: var(--cyan) !important;
+}
+
+.text-success {
+    color: var(--green) !important;
+}
+
+.text-warning {
+    color: var(--orange) !important;
+}
+
+.text-danger {
+    color: var(--pink) !important;
+}
+
+.text-info {
+    color: var(--cyan) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    header, .navbar-custom {
+        padding: 1rem;
+    }
+    
+    header nav, .navbar-custom nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    nav a {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.85rem;
+    }
+    
+    nav span {
+        margin-left: 0;
+        order: -1;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .quick-actions-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    main h2 {
+        font-size: 2rem;
+    }
+    
+    .welcome-text {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container, .container-fluid {
+        padding: 10px;
+    }
+    
+    main {
+        margin: 0.5rem;
+        padding: 1rem;
+        border-radius: 16px;
+    }
+    
+    .dashboard-card,
+    .stat-card,
+    .quick-actions {
+        padding: 1.5rem;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .stat-card .stat-value {
+        font-size: 2rem;
+    }
+    
+    nav a, nav span {
+        padding: 0.75rem;
+        text-align: center;
+    }
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Apply animations to elements */
+.stat-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.dashboard-card {
+    animation: slideInLeft 0.6s ease-out;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* ==========================================
+   ANALYTICS PAGE SPECIFIC STYLES
+   ========================================== */
+.analytics-header {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 2px solid var(--purple);
+    box-shadow: 0 0 40px var(--glow-purple), 0 20px 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.analytics-header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-primary) !important;
+    text-shadow: 0 0 20px var(--glow-cyan);
+    margin-bottom: 1rem;
+}
+
+.analytics-header .lead {
+    color: var(--text-secondary) !important;
+    font-size: 1.1rem;
+}
+
+.back-to-dashboard {
+    color: var(--cyan) !important;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: inline-block;
+    transition: all var(--transition-medium) var(--ease);
+}
+
+.back-to-dashboard:hover {
+    color: var(--text-primary) !important;
+    text-shadow: 0 0 10px var(--glow-cyan);
+    transform: translateX(-5px);
+}
+
+.date-filter .form-control {
+    background: rgba(0, 242, 254, 0.1);
+    border: 2px solid rgba(0, 242, 254, 0.3);
+    color: var(--text-primary);
+    border-radius: 8px;
+}
+
+.date-filter .form-control:focus {
+    background: rgba(0, 242, 254, 0.2);
+    border-color: var(--cyan);
+    box-shadow: 0 0 20px var(--glow-cyan);
+    color: var(--text-primary);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    transition: all var(--transition-medium) var(--ease);
+}
+
+.stat-icon.products {
+    background: linear-gradient(135deg, var(--cyan), rgba(0, 242, 254, 0.3));
+    color: #ffffff !important;
+    box-shadow: 0 0 20px var(--glow-cyan);
+}
+
+.stat-icon.revenue {
+    background: linear-gradient(135deg, var(--gold), rgba(255, 215, 0, 0.3));
+    color: #ffffff !important;
+    box-shadow: 0 0 20px var(--glow-gold);
+}
+
+.stat-icon.orders {
+    background: linear-gradient(135deg, var(--green), rgba(57, 255, 20, 0.3));
+    color: #ffffff !important;
+    box-shadow: 0 0 20px var(--glow-green);
+}
+
+.stat-icon.items {
+    background: linear-gradient(135deg, var(--purple), rgba(176, 38, 255, 0.3));
+    color: #ffffff !important;
+    box-shadow: 0 0 20px var(--glow-purple);
+}
+
+.stat-icon.stock {
+    background: linear-gradient(135deg, var(--cyan), rgba(0, 242, 254, 0.3));
+    color: var(--cyan);
+    box-shadow: 0 0 20px var(--glow-cyan);
+}
+
+.stat-icon.out-stock {
+    background: linear-gradient(135deg, var(--pink), rgba(255, 0, 110, 0.3));
+    color: var(--pink);
+    box-shadow: 0 0 20px var(--glow-pink);
+}
+
+.stat-info h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-primary) !important;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.stat-info p {
+    color: var(--text-secondary) !important;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.highlight {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 40px var(--glow-gold) !important;
+}
+
+.alert-card {
+    border-color: var(--pink) !important;
+    box-shadow: 0 0 40px var(--glow-pink) !important;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.chart-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    padding: 30px;
+    border: 2px solid var(--purple);
+    box-shadow: 0 0 40px var(--glow-purple), 0 10px 40px rgba(0, 0, 0, 0.4);
+    transition: all var(--transition-medium) var(--ease);
+}
+
+.chart-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 50px var(--glow-purple), 0 15px 50px rgba(0, 0, 0, 0.6);
+}
+
+.chart-header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(0, 242, 254, 0.2);
+}
+
+.chart-header h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary) !important;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    margin: 0;
+}
+
+/* Chart canvas styling */
+canvas {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 12px;
+}
+
+/* Table styling for analytics */
+.table {
+    color: var(--text-primary) !important;
+    background: transparent;
+}
+
+.table th {
+    color: var(--cyan) !important;
+    border-color: rgba(0, 242, 254, 0.3) !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.table td {
+    color: var(--text-primary) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.table-hover tbody tr:hover {
+    background: rgba(0, 242, 254, 0.1) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Progress bars */
+.progress {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    height: 8px;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+    box-shadow: 0 0 10px var(--glow-cyan);
+}
+
+/* Tooltips */
+[data-tooltip] {
+    position: relative;
+    cursor: help;
+}
+
+[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 1000;
+    border: 1px solid var(--cyan);
+    box-shadow: 0 0 15px var(--glow-cyan);
+}
+
+[data-tooltip]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(1px);
+    border: 5px solid transparent;
+    border-top-color: var(--cyan);
+    z-index: 1000;
+}/* ===
+=======================================
+   SUPPLIER DASHBOARD SPECIFIC FIXES
+   ========================================== */
+.product-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.product-info div {
+    flex: 1;
+}
+
+.product-stats {
+    text-align: right;
+}
+
+.product-stats strong {
+    color: var(--green) !important;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-shadow: 0 0 15px var(--glow-green);
+}
+
+.product-stats p {
+    color: var(--text-secondary) !important;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+}
+
+/* Fix for image styling in product items */
+.product-item img {
+    border: 2px solid rgba(0, 242, 254, 0.3);
+    transition: all var(--transition-medium) var(--ease);
+}
+
+.product-item:hover img {
+    border-color: var(--cyan);
+    box-shadow: 0 0 15px var(--glow-cyan);
+}
+
+/* Alert card specific styling */
+.alert-card {
+    border-color: var(--pink) !important;
+    box-shadow: 0 0 40px var(--glow-pink) !important;
+}
+
+.alert-card h3 {
+    color: var(--pink) !important;
+    text-shadow: 0 0 15px var(--glow-pink) !important;
+}
+
+/* Text color fixes for better visibility */
+.text-danger {
+    color: var(--pink) !important;
+}
+
+.text-success {
+    color: var(--green) !important;
+}
+
+.text-warning {
+    color: var(--gold) !important;
+}
+
+.text-primary {
+    color: var(--cyan) !important;
+}
+
+.text-info {
+    color: var(--cyan) !important;
+}
+
+/* Form control styling for analytics */
+.form-control {
+    background: rgba(0, 242, 254, 0.1) !important;
+    border: 2px solid rgba(0, 242, 254, 0.3) !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px !important;
+    transition: all var(--transition-medium) var(--ease) !important;
+}
+
+.form-control:focus {
+    background: rgba(0, 242, 254, 0.2) !important;
+    border-color: var(--cyan) !important;
+    box-shadow: 0 0 20px var(--glow-cyan) !important;
+    color: var(--text-primary) !important;
+}
+
+.form-control::placeholder {
+    color: var(--text-muted) !important;
+}
+
+/* Enhanced Input Field Styling for Add to Cart */
+input[type="number"], input[type="text"], input[type="email"], input[type="password"] {
+    color: var(--text-primary) !important;
+    background: rgba(0, 242, 254, 0.15) !important;
+    border: 2px solid rgba(0, 242, 254, 0.4) !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    transition: all var(--transition-medium) var(--ease) !important;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3) !important;
+}
+
+input[type="number"]:focus, input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+    outline: none !important;
+    background: rgba(0, 242, 254, 0.25) !important;
+    border-color: var(--cyan) !important;
+    box-shadow: 0 0 20px var(--glow-cyan), inset 0 0 10px rgba(0, 242, 254, 0.2) !important;
+    color: var(--text-primary) !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5) !important;
+}
+
+input[type="number"]::placeholder, input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+/* Specific styling for quantity inputs in product cards */
+.product-card input[type="number"] {
+    width: 80px !important;
+    text-align: center !important;
+    background: rgba(57, 255, 20, 0.15) !important;
+    border: 2px solid rgba(57, 255, 20, 0.4) !important;
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6) !important;
+}
+
+.product-card input[type="number"]:focus {
+    background: rgba(57, 255, 20, 0.25) !important;
+    border-color: var(--green) !important;
+    box-shadow: 0 0 20px var(--glow-green), inset 0 0 10px rgba(57, 255, 20, 0.2) !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Navbar dropdown fixes */
+.dropdown-menu {
+    background: var(--bg-card) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 2px solid var(--cyan) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 0 30px var(--glow-cyan) !important;
+}
+
+.dropdown-item {
+    color: var(--text-primary) !important;
+    transition: all var(--transition-fast) var(--ease);
+}
+
+.dropdown-item:hover {
+    background: rgba(0, 242, 254, 0.1) !important;
+    color: var(--cyan) !important;
+    transform: translateX(8px);
+}
+
+.dropdown-divider {
+    border-color: rgba(0, 242, 254, 0.3) !important;
+}
+
+/* Navbar brand and nav links */
+.navbar-brand strong {
+    color: var(--cyan) !important;
+    text-shadow: 0 0 20px var(--glow-cyan) !important;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-secondary) !important;
+    transition: all var(--transition-medium) var(--ease);
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--cyan) !important;
+    text-shadow: 0 0 10px var(--glow-cyan);
+}
+
+/* Override any remaining white backgrounds */
+[style*="background: white"],
+[style*="background:#fff"],
+[style*="background: #fff"] {
+    background: var(--bg-card) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 2px solid var(--cyan) !important;
+    box-shadow: 0 0 30px var(--glow-cyan) !important;
+}
+
+/* Fix text colors in overridden elements */
+[style*="background: white"] * {
+    color: var(--text-primary) !important;
+}
+
+[style*="color: #666"] {
+    color: var(--text-secondary) !important;
+}
+
+[style*="color: #28a745"] {
+    color: var(--green) !important;
+}
+
+[style*="color: #dc3545"] {
+    color: var(--pink) !important;
+}
+
+[style*="color: #007bff"] {
+    color: var(--cyan) !important;
+}
+
+[style*="color: #ffc107"] {
+    color: var(--gold) !important;
+}/* ====
+======================================
+   ORDER STATUS BADGES - ENHANCED VISIBILITY
+   ========================================== */
+.status-completed {
+    background: linear-gradient(135deg, var(--green), #00cc00) !important;
+    color: var(--bg-primary) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 0 15px var(--glow-green) !important;
+}
+
+.status-pending {
+    background: linear-gradient(135deg, var(--orange), #ff4500) !important;
+    color: var(--bg-primary) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 0 15px var(--glow-orange) !important;
+}
+
+.status-processing {
+    background: linear-gradient(135deg, var(--cyan), #0080ff) !important;
+    color: var(--bg-primary) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 0 15px var(--glow-cyan) !important;
+}
+
+.status-cancelled {
+    background: linear-gradient(135deg, var(--pink), #cc0055) !important;
+    color: var(--text-primary) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 0 15px var(--glow-pink) !important;
+}
+
+/* Enhanced status badge styling */
+.status-badge {
+    padding: 6px 12px !important;
+    border-radius: 8px !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
+    transition: all var(--transition-medium) var(--ease) !important;
+    border: 2px solid transparent !important;
+}
+
+.status-badge:hover {
+    transform: scale(1.05) !important;
+    filter: brightness(1.2) !important;
+}
+
+/* Table styling improvements for better visibility */
+.table {
+    color: var(--text-primary) !important;
+    background: transparent !important;
+    margin-bottom: 0 !important;
+}
+
+.table th {
+    color: var(--cyan) !important;
+    border-color: rgba(0, 242, 254, 0.3) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-size: 0.9rem !important;
+    padding: 15px 12px !important;
+    background: rgba(0, 242, 254, 0.1) !important;
+}
+
+.table td {
+    color: var(--text-primary) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    padding: 15px 12px !important;
+    vertical-align: middle !important;
+}
+
+.table-hover tbody tr:hover {
+    background: rgba(0, 242, 254, 0.1) !important;
+    color: var(--text-primary) !important;
+    transform: translateX(5px) !important;
+    transition: all var(--transition-medium) var(--ease) !important;
+}
+
+.table-hover tbody tr:hover td {
+    color: var(--text-primary) !important;
+}
+
+/* Strong text in tables */
+.table strong {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+}
+
+/* Table container styling */
+.dashboard-card .table {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+}
+
+/* Responsive table improvements */
+@media (max-width: 768px) {
+    .table {
+        font-size: 0.9rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 10px 8px !important;
+    }
+    
+    .status-badge {
+        font-size: 0.7rem !important;
+        padding: 4px 8px !important;
+    }
+}
+
+/* Fix for any remaining inline styled elements */
+[style*="background: white"] table,
+[style*="background:#fff"] table,
+[style*="background: #fff"] table {
+    background: transparent !important;
+}
+
+[style*="background: white"] th,
+[style*="background:#fff"] th,
+[style*="background: #fff"] th {
+    background: rgba(0, 242, 254, 0.1) !important;
+    color: var(--cyan) !important;
+}
+
+[style*="background: white"] td,
+[style*="background:#fff"] td,
+[style*="background: #fff"] td {
+    color: var(--text-primary) !important;
+}/* 
+==========================================
+   ADDITIONAL STATUS BADGE FIXES
+   ========================================== */
+
+/* Fix for status badges with different naming conventions */
+.status-badge.pending,
+.status-pending,
+.badge.pending {
+    background: linear-gradient(135deg, var(--orange), #ff4500) !important;
+    color: var(--bg-primary) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 0 15px var(--glow-orange) !important;
+}
+
+.status-badge.completed,
+.status-completed,
+.badge.completed {
+    background: linear-gradient(135deg, var(--green), #00cc00) !important;
+    color: var(--bg-primary) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 0 15px var(--glow-green) !important;
+}
+
+.status-badge.processing,
+.status-processing,
+.badge.processing {
+    background: linear-gradient(135deg, var(--cyan), #0080ff) !important;
+    color: var(--bg-primary) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 0 15px var(--glow-cyan) !important;
+}
+
+.status-badge.cancelled,
+.status-cancelled,
+.badge.cancelled {
+    background: linear-gradient(135deg, var(--pink), #cc0055) !important;
+    color: var(--text-primary) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 0 15px var(--glow-pink) !important;
+}
+
+.status-badge.shipped,
+.status-shipped,
+.badge.shipped {
+    background: linear-gradient(135deg, var(--purple), #6b46c1) !important;
+    color: var(--text-primary) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 0 15px var(--glow-purple) !important;
+}
+
+/* Override any light colored status badges */
+.status-badge[style*="background: #fef3c7"],
+.status-badge[style*="background: #d1fae5"],
+.status-badge[style*="background: #fee2e2"],
+.status-badge[style*="background: #dbeafe"],
+.status-badge[style*="background: #e5e7eb"] {
+    background: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    border: 2px solid var(--cyan) !important;
+    box-shadow: 0 0 15px var(--glow-cyan) !important;
+}
+
+/* Ensure all status badges have proper styling */
+span[class*="status"] {
+    padding: 6px 12px !important;
+    border-radius: 8px !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
+    transition: all var(--transition-medium) var(--ease) !important;
+    border: 2px solid transparent !important;
+}
+
+/* Fix for any badges with light backgrounds */
+.badge[style*="background: #"],
+.status-badge[style*="background: #"] {
+    background: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    border: 2px solid var(--cyan) !important;
+    box-shadow: 0 0 15px var(--glow-cyan) !important;
+}
+
+/* Ensure text is always visible in status elements */
+.status-badge *,
+.badge *,
+span[class*="status"] * {
+    color: inherit !important;
+}
+
+/* Fix for table cells containing status badges */
+td .status-badge,
+td .badge,
+td span[class*="status"] {
+    margin: 2px 0 !important;
+}
+
+/* Additional contrast fixes */
+.table tbody tr td .status-badge,
+.table tbody tr td .badge,
+.table tbody tr td span[class*="status"] {
+    min-width: 80px !important;
+    text-align: center !important;
+    font-weight: 800 !important;
+}
+
+/* Hover effects for status badges */
+.status-badge:hover,
+.badge:hover,
+span[class*="status"]:hover {
+    transform: scale(1.05) !important;
+    filter: brightness(1.2) !important;
+    z-index: 10 !important;
+    position: relative !important;
+}/* =
+=========================================
+   ICON VISIBILITY FIXES
+   ========================================== */
+
+/* Ensure all FontAwesome icons are visible */
+.fas, .fa, .fab, .far {
+    display: inline-block !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Stat icon specific fixes */
+.stat-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 16px !important;
+    font-size: 2.5rem !important;
+    margin-bottom: 15px !important;
+    transition: all var(--transition-medium) var(--ease) !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.stat-icon i {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: inherit !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Force icon visibility in stat cards */
+.stat-card .stat-icon i,
+.stat-card i,
+.dashboard-card i,
+.quick-actions i {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: inline-block !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+}
+
+/* ==========================================
+   PRODUCT LIST SUPPLIER NAME VISIBILITY
+   ========================================== */
+
+/* Product card text visibility */
+.product-card {
+    background: var(--bg-card) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 2px solid var(--purple) !important;
+    box-shadow: 0 0 30px var(--glow-purple), 0 15px 35px rgba(0, 0, 0, 0.4) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    transition: all var(--transition-medium) var(--ease) !important;
+    padding: 20px !important;
+}
+
+.product-card h3 {
+    color: var(--text-primary) !important;
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    margin: 15px 0 10px 0 !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important;
+}
+
+.product-card p {
+    color: var(--text-primary) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+    margin: 8px 0 !important;
+    opacity: 0.9 !important;
+}
+
+.product-card .price {
+    color: var(--cyan) !important;
+    font-size: 1.5rem !important;
+    font-weight: 800 !important;
+    text-shadow: 0 0 15px var(--glow-cyan) !important;
+    margin: 15px 0 !important;
+}
+
+/* Supplier name specific styling */
+.product-card p strong {
+    color: var(--gold) !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 10px var(--glow-gold) !important;
+}
+
+/* Enhanced supplier name visibility */
+.product-card p:has(strong:contains("Supplier")) {
+    background: rgba(255, 215, 0, 0.1) !important;
+    padding: 8px 12px !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--gold) !important;
+    margin: 10px 0 !important;
+}
+
+/* Alternative approach for supplier info */
+.product-card [style*="Supplier"] {
+    background: rgba(255, 215, 0, 0.1) !important;
+    color: var(--text-primary) !important;
+    padding: 8px 12px !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--gold) !important;
+    margin: 10px 0 !important;
+}
+
+/* Stock information styling */
+.product-card p:has(strong:contains("Stock")) {
+    background: rgba(57, 255, 20, 0.1) !important;
+    color: var(--text-primary) !important;
+    padding: 6px 10px !important;
+    border-radius: 6px !important;
+    border-left: 3px solid var(--green) !important;
+    font-weight: 600 !important;
+}
+
+/* Product card hover effects */
+.product-card:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    border-color: var(--cyan) !important;
+    box-shadow: 0 0 50px var(--glow-cyan), 0 25px 50px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Product image styling */
+.product-card img {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+    border: 2px solid rgba(0, 242, 254, 0.3) !important;
+    transition: all var(--transition-medium) var(--ease) !important;
+}
+
+.product-card:hover img {
+    border-color: var(--cyan) !important;
+    box-shadow: 0 0 20px var(--glow-cyan) !important;
+}
+
+/* No image placeholder styling */
+.product-card div[style*="No Image"] {
+    background: rgba(0, 242, 254, 0.1) !important;
+    border: 2px solid rgba(0, 242, 254, 0.3) !important;
+    color: var(--cyan) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+/* ==========================================
+   BUTTON FIXES IN PRODUCT CARDS
+   ========================================== */
+
+.product-card .btn {
+    background: linear-gradient(135deg, var(--cyan), var(--purple)) !important;
+    color: var(--text-primary) !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: all var(--transition-medium) var(--ease) !important;
+    display: inline-block !important;
+    text-align: center !important;
+}
+
+.product-card .btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 0 20px var(--glow-cyan) !important;
+    color: var(--text-primary) !important;
+    text-decoration: none !important;
+}
+
+.product-card .btn-danger {
+    background: linear-gradient(135deg, var(--pink), #cc0055) !important;
+    color: var(--text-primary) !important;
+}
+
+.product-card .btn-danger:hover {
+    box-shadow: 0 0 20px var(--glow-pink) !important;
+    color: var(--text-primary) !important;
+}
+
+/* ==========================================
+   GENERAL TEXT VISIBILITY FIXES
+   ========================================== */
+
+/* Override any hidden text */
+[style*="color: #666"],
+[style*="color: #999"],
+[style*="color: #ccc"] {
+    color: var(--text-primary) !important;
+}
+
+/* Ensure all text in cards is visible */
+.product-card *,
+.stat-card *,
+.dashboard-card * {
+    color: var(--text-primary) !important;
+}
+
+/* Special handling for supplier names */
+.product-card p:contains("Supplier:") {
+    background: rgba(255, 215, 0, 0.15) !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--gold) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+}
+
+/* Force visibility for any hidden elements */
+.product-card [style*="display: none"],
+.stat-card [style*="display: none"] {
+    display: block !important;
+}
+
+.product-card [style*="visibility: hidden"],
+.stat-card [style*="visibility: hidden"] {
+    visibility: visible !important;
+}
+
+.product-card [style*="opacity: 0"],
+.stat-card [style*="opacity: 0"] {
+    opacity: 1 !important;
+}/
+* ==========================================
+   SUPPLIER INFO SPECIFIC STYLING
+   ========================================== */
+
+.supplier-info {
+    background: rgba(255, 215, 0, 0.15) !important;
+    border: 2px solid var(--gold) !important;
+    border-radius: 10px !important;
+    padding: 12px 15px !important;
+    margin: 15px 0 !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 0 15px var(--glow-gold) !important;
+    transition: all var(--transition-medium) var(--ease) !important;
+}
+
+.supplier-info:hover {
+    background: rgba(255, 215, 0, 0.25) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 0 25px var(--glow-gold) !important;
+}
+
+.supplier-info strong {
+    color: var(--gold) !important;
+    text-shadow: 0 0 10px var(--glow-gold) !important;
+    font-weight: 800 !important;
+}
+
+.supplier-name {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3) !important;
+    margin-left: 8px !important;
+}
+
+/* Stock info styling */
+.product-card p:has(strong:contains("Stock")) {
+    background: rgba(57, 255, 20, 0.15) !important;
+    border: 2px solid var(--green) !important;
+    border-radius: 8px !important;
+    padding: 10px 12px !important;
+    margin: 10px 0 !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 0 10px var(--glow-green) !important;
+}
+
+.product-card p:has(strong:contains("Stock")) strong {
+    color: var(--green) !important;
+    text-shadow: 0 0 10px var(--glow-green) !important;
+}
+
+/* ==========================================
+   ICON FONT LOADING FIX
+   ========================================== */
+
+/* FontAwesome Icon Fixes */
+.fas, .fa, .fab, .far, .fal, .fad {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto !important;
+    line-height: 1 !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Specific FontAwesome icon content fixes */
+.fa-boxes::before { content: "\f468" !important; }
+.fa-exclamation-triangle::before { content: "\f071" !important; }
+.fa-dollar-sign::before { content: "\f155" !important; }
+.fa-shopping-cart::before { content: "\f07a" !important; }
+.fa-chart-line::before { content: "\f201" !important; }
+.fa-warehouse::before { content: "\f494" !important; }
+.fa-trophy::before { content: "\f091" !important; }
+.fa-bolt::before { content: "\f0e7" !important; }
+.fa-user-circle::before { content: "\f2bd" !important; }
+.fa-tachometer-alt::before { content: "\f3fd" !important; }
+.fa-sign-out-alt::before { content: "\f2f5" !important; }
+
+/* Stat icon container fixes */
+.stat-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 16px !important;
+    font-size: 2.5rem !important;
+    margin-bottom: 15px !important;
+    transition: all var(--transition-medium) var(--ease) !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.stat-icon i {
+    font-size: 2.5rem !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: inherit !important;
+    text-shadow: 0 0 10px currentColor !important;
+    line-height: 1 !important;
+}
+
+/* Remove any conflicting pseudo-elements */
+.stat-icon::before,
+.stat-icon::after {
+    display: none !important;
+}
+
+/* Force visibility on all dashboard icons */
+.dashboard-card i,
+.stat-card i,
+.quick-actions i,
+.btn i,
+.navbar i {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+    font-size: inherit !important;
+    color: inherit !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+}
+
+/* Ensure icons don't get overridden */
+i[class*="fa-"] {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    display: inline-block !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Remove any CSS that might be hiding icons */
+.stat-icon i:not([class*="fa-"]) {
+    display: none !important;
+}
+
+/* Fallback for broken icons */
+.stat-icon:not(:has(i)) {
+    font-size: 2rem !important;
+}
+
+.stat-icon.products:not(:has(i))::before {
+    content: "📦" !important;
+    font-size: 2rem !important;
+}
+
+.stat-icon.out-stock:not(:has(i))::before {
+    content: "⚠️" !important;
+    font-size: 2rem !important;
+}
+
+.stat-icon.revenue:not(:has(i))::before {
+    content: "💰" !important;
+    font-size: 2rem !important;
+}
+
+.stat-icon.orders:not(:has(i))::before {
+    content: "🛒" !important;
+    font-size: 2rem !important;
+}/* =
+=========================================
+   SUPPLIER ORDERS PAGE ENHANCEMENTS
+   ========================================== */
+
+/* Main heading with icon */
+main h2 {
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 2.5rem !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 3px !important;
+    color: var(--text-primary) !important;
+    text-shadow: 
+        0 0 20px var(--glow-cyan),
+        0 0 40px var(--glow-pink),
+        0 0 60px var(--glow-purple),
+        2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+    margin-bottom: 2rem !important;
+    text-align: center !important;
+    position: relative !important;
+    z-index: 1 !important;
+    filter: brightness(1.3) !important;
+}
+
+main h2 i {
+    color: var(--cyan) !important;
+    text-shadow: 0 0 30px var(--glow-cyan) !important;
+    margin-right: 15px !important;
+    animation: pulse 2s ease-in-out infinite !important;
+}
+
+/* Enhanced table wrapper */
+.table-wrapper {
+    overflow-x: auto !important;
+    border-radius: 12px !important;
+    box-shadow: 0 0 30px var(--glow-purple) !important;
+}
+
+/* Table header icons */
+.table th i {
+    color: var(--cyan) !important;
+    margin-right: 8px !important;
+    text-shadow: 0 0 10px var(--glow-cyan) !important;
+    font-size: 0.9rem !important;
+}
+
+/* Table cell icons */
+.table td i {
+    color: var(--text-secondary) !important;
+    margin-right: 6px !important;
+    opacity: 0.8 !important;
+}
+
+/* Status badge icons */
+.status-badge i {
+    margin-right: 6px !important;
+    font-size: 0.8rem !important;
+}
+
+.status-completed i {
+    color: var(--bg-primary) !important;
+    animation: checkmark 0.6s ease-in-out !important;
+}
+
+.status-pending i {
+    color: var(--bg-primary) !important;
+    animation: spin 2s linear infinite !important;
+}
+
+.status-processing i {
+    color: var(--bg-primary) !important;
+    animation: spin 1s linear infinite !important;
+}
+
+.status-cancelled i {
+    color: var(--text-primary) !important;
+    animation: shake 0.5s ease-in-out !important;
+}
+
+/* Icon animations */
+@keyframes checkmark {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+}
+
+/* Empty state styling */
+.dashboard-card .fas.fa-inbox {
+    background: linear-gradient(135deg, var(--cyan), var(--purple)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    animation: pulse 2s ease-in-out infinite !important;
+}
+
+/* Enhanced no-orders state */
+.dashboard-card h3 i.fa-exclamation-circle {
+    color: var(--orange) !important;
+    text-shadow: 0 0 15px var(--glow-orange) !important;
+    margin-right: 10px !important;
+}
+
+/* Button icons */
+.btn i {
+    margin-right: 8px !important;
+    font-size: 0.9rem !important;
+}
+
+.btn-primary i {
+    color: var(--text-primary) !important;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Stats grid enhancements */
+.stats-grid .stat-card h3 {
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 2.2rem !important;
+    font-weight: 900 !important;
+    color: var(--text-primary) !important;
+    margin: 10px 0 !important;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3) !important;
+}
+
+.stats-grid .stat-card p {
+    color: var(--text-secondary) !important;
+    font-size: 0.95rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+}
+
+/* Responsive icon adjustments */
+@media (max-width: 768px) {
+    main h2 {
+        font-size: 2rem !important;
+    }
+    
+    main h2 i {
+        margin-right: 10px !important;
+    }
+    
+    .table th i,
+    .table td i {
+        display: none !important;
+    }
+    
+    .status-badge i {
+        margin-right: 4px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    main h2 {
+        font-size: 1.8rem !important;
+        letter-spacing: 1px !important;
+    }
+    
+    .stats-grid .stat-card h3 {
+        font-size: 1.8rem !important;
+    }
+    
+    .btn i {
+        margin-right: 6px !important;
+    }
+}
+
+/* Table row hover effects with icons */
+.table-hover tbody tr:hover td i {
+    color: var(--cyan) !important;
+    text-shadow: 0 0 10px var(--glow-cyan) !important;
+    transform: scale(1.1) !important;
+    transition: all var(--transition-medium) var(--ease) !important;
+}
+
+/* Enhanced dashboard card titles */
+.dashboard-card h3 i {
+    color: var(--gold) !important;
+    text-shadow: 0 0 15px var(--glow-gold) !important;
+    margin-right: 12px !important;
+    font-size: 1.2rem !important;
+}
+
+/* Welcome message icon */
+.welcome {
+    background: linear-gradient(135deg, var(--cyan), var(--purple)) !important;
+    color: white !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 12px !important;
+    box-shadow: 0 0 30px var(--glow-cyan) !important;
+    font-weight: 600 !important;
+    position: relative !important;
+}
+
+.welcome::before {
+    content: "👋" !important;
+    margin-right: 8px !important;
+    font-size: 1.1rem !important;
+}
+
+/* Navigation icons */
+nav a {
+    position: relative !important;
+    transition: all var(--transition-medium) var(--ease) !important;
+}
+
+nav a:hover {
+    transform: translateY(-2px) !important;
+}
+
+/* Add icons to navigation if they don't exist */
+nav a[href*="dashboard"]::before {
+    content: "🏠 " !important;
+}
+
+nav a[href*="add-product"]::before {
+    content: "➕ " !important;
+}
+
+nav a[href*="product-list"]::before {
+    content: "📦 " !important;
+}
+
+nav a[href*="logout"]::before {
+    content: "🚪 " !important;
+}

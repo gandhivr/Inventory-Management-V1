@@ -1,0 +1,263 @@
+/* Import Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Base body and typography */
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  background-color: #0f172a;
+  color: #f3f4f6;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container for main content */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 8px 20px rgba(118, 75, 162, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Header styling */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+header h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+nav a {
+  padding: 0.6rem 1.3rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #f3f4f6;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid transparent;
+  text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+nav a:hover {
+  color: #ff6b6b;
+  background-color: transparent;
+  border-color: #ff6b6b;
+}
+nav .welcome {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: default;
+  user-select: none;
+}
+
+/* Main heading */
+main h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+  color: #f3f4f6;
+}
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+.stat-card {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(118, 75, 162, 0.35);
+  color: #f3f4f6;
+  user-select: none;
+  transition: transform 0.3s ease;
+}
+.stat-card:hover {
+  transform: translateY(-8px);
+}
+.stat-card h3 {
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+  color: #e4d7ff;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.stat-card p {
+  font-weight: 700;
+  font-size: 3rem;
+  margin: 0;
+  color: #fff;
+  user-select: all;
+}
+
+/* No orders message */
+.no-orders {
+  background: rgba(255, 255, 255, 0.10);
+  border-radius: 12px;
+  padding: 4rem 2rem;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(118, 75, 162, 0.20);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+.no-orders a.btn {
+  margin-top: 1.5rem;
+  padding: 0.8rem 2.5rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+  background: #ff6b6b;
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.no-orders a.btn:hover {
+  background: #f44336;
+}
+
+/* Table wrapper */
+.table-wrapper {
+  overflow-x: auto;
+  background: rgba(255, 255, 255, 0.10);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 12px 40px rgba(100, 88, 153, 0.18);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  user-select: none;
+  color: white;
+}
+thead tr {
+  background-color: transparent;
+}
+thead th {
+  text-align: left;
+  padding: 1rem 1rem;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #ddd6fe;
+}
+tbody tr {
+  background-color: rgba(255, 255, 255, 0.10);
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.20);
+}
+tbody td {
+  padding: 1.4rem 1.3rem;
+  vertical-align: middle;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #ececec;
+}
+
+/* Order status badges */
+.order-status {
+  padding: 0.6rem 1.2rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  display: inline-block;
+  cursor: default;
+  user-select: none;
+  letter-spacing: 0.04em;
+}
+.order-status.completed {
+  background: #4ade80;
+  color: #065f46;
+  box-shadow: 0 0 8px #4ade80b3;
+}
+.order-status.pending {
+  background: #fde68a;
+  color: #92400e;
+  box-shadow: 0 0 8px #fde68aa6;
+}
+
+/* Buttons in actions column */
+.actions a {
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #f3f4f6;
+  text-decoration: none;
+  margin-right: 0.5rem;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+.actions .btn-edit {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  box-shadow: 0 0 16px #764ba2cc;
+}
+.actions .btn-edit:hover {
+  background: #5a6ccc;
+}
+.actions .btn-delete {
+  background: #ff6b6b;
+}
+.actions .btn-delete:hover {
+  background: #e53e3e;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+  }
+  thead th,
+  tbody td {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+  tbody td {
+    font-size: 0.95rem;
+  }
+}

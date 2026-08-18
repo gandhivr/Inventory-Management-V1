@@ -1,0 +1,176 @@
+/* ============================================================================
+   PRODUCT IMAGE SIZE FIX
+   ============================================================================
+   Purpose: Ensure all product images are properly sized and don't overflow
+   This CSS file fixes oversized product images across all pages
+   ============================================================================ */
+
+/* ----------------------------------------------------------------------------
+   GLOBAL PRODUCT CARD IMAGE STYLING
+   ---------------------------------------------------------------------------- */
+
+/* Target all product card images */
+.product-card img,
+.product-card .product-image {
+    width: 100% !important;           /* Full width of container */
+    height: 180px !important;         /* Fixed height for consistency */
+    max-height: 180px !important;     /* Maximum height limit */
+    min-height: 180px !important;     /* Minimum height to maintain consistency */
+    object-fit: cover !important;     /* Crop image to fit without distortion */
+    object-position: center !important; /* Center the image */
+    display: block !important;        /* Remove inline spacing */
+    border-radius: 12px 12px 0 0 !important; /* Rounded top corners */
+}
+
+/* Specific targeting for product-image class */
+.product-image {
+    width: 100% !important;
+    height: 180px !important;
+    max-height: 180px !important;
+    min-height: 180px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+}
+
+/* ----------------------------------------------------------------------------
+   FEATURED PRODUCT CARD IMAGES
+   ---------------------------------------------------------------------------- */
+
+/* Target featured product images */
+.featured-product-card img {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+}
+
+/* ----------------------------------------------------------------------------
+   PRODUCT DETAIL PAGE - LARGE IMAGE
+   ---------------------------------------------------------------------------- */
+
+/* If there's a product detail view with larger image */
+.product-detail-image,
+.product-main-image {
+    max-width: 100% !important;       /* Don't exceed container width */
+    max-height: 400px !important;     /* Limit maximum height */
+    width: auto !important;           /* Maintain aspect ratio */
+    height: auto !important;          /* Maintain aspect ratio */
+    object-fit: contain !important;   /* Show full image without cropping */
+    display: block !important;
+    margin: 0 auto !important;        /* Center the image */
+    border-radius: 12px !important;
+}
+
+/* ----------------------------------------------------------------------------
+   PRODUCT GRID LAYOUT
+   ---------------------------------------------------------------------------- */
+
+/* Ensure product grid items don't overflow */
+.product-grid .product-card,
+.product-grid .featured-product-card {
+    overflow: hidden !important;      /* Hide any overflow */
+    max-width: 100% !important;       /* Don't exceed grid cell */
+}
+
+/* ----------------------------------------------------------------------------
+   CART AND ORDER IMAGES (THUMBNAILS)
+   ---------------------------------------------------------------------------- */
+
+/* Small thumbnail images in cart/orders */
+.product-thumbnail,
+.cart-item img,
+.order-item img {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+}
+
+/* ----------------------------------------------------------------------------
+   RESPONSIVE ADJUSTMENTS
+   ---------------------------------------------------------------------------- */
+
+/* Mobile devices - smaller images */
+@media (max-width: 768px) {
+    .product-card img,
+    .featured-product-card img {
+        height: 180px !important;
+    }
+    
+    .product-detail-image,
+    .product-main-image {
+        max-height: 300px !important;
+    }
+}
+
+/* Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .product-card img,
+    .featured-product-card img {
+        height: 190px !important;
+    }
+}
+
+/* ----------------------------------------------------------------------------
+   PREVENT IMAGE DISTORTION
+   ---------------------------------------------------------------------------- */
+
+/* Ensure images maintain aspect ratio */
+img[src*="uploads/products"] {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* For any product image container */
+.product-image-container {
+    width: 100% !important;
+    height: 200px !important;
+    overflow: hidden !important;
+    border-radius: 12px 12px 0 0 !important;
+    background: #f7fafc !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.product-image-container img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* ============================================================================
+   KEY CSS CONCEPTS EXPLAINED:
+   ============================================================================
+   
+   1. object-fit: cover
+      - Crops the image to fill the container while maintaining aspect ratio
+      - Prevents distortion but may crop edges
+   
+   2. object-fit: contain
+      - Shows the entire image within the container
+      - May leave empty space but shows full image
+   
+   3. !important
+      - Overrides any other CSS rules
+      - Use when styles need to take priority
+   
+   4. max-width: 100%
+      - Prevents images from exceeding container width
+      - Responsive design essential
+   
+   5. height: auto
+      - Maintains aspect ratio when width is set
+      - Prevents image distortion
+   
+   6. overflow: hidden
+      - Hides any content that exceeds container bounds
+      - Prevents layout breaking
+   
+   7. @media queries
+      - Responsive design for different screen sizes
+      - Adjusts styles based on device width
+   
+   ============================================================================ */

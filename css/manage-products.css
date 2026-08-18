@@ -1,0 +1,197 @@
+/* Manage Products - Simple and Clean */
+@import url('base.css');
+
+/* Page Header */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+}
+
+.page-header h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Product Image in Table */
+.product-image-cell {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-image-placeholder-cell {
+    width: 60px;
+    height: 60px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #9ca3af;
+}
+
+.product-name-cell {
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 0.95rem;
+}
+
+.product-price-cell {
+    font-weight: 700;
+    color: #059669;
+    font-size: 1rem;
+}
+
+.product-stock-cell {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Stock Status Badges */
+.stock-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+}
+
+.stock-in-stock {
+    background: #059669;
+}
+
+.stock-low-stock {
+    background: #d97706;
+}
+
+.stock-out-of-stock {
+    background: #dc2626;
+}
+
+/* Product Actions */
+.product-actions-cell {
+    display: flex;
+    gap: 8px;
+}
+
+.product-actions-cell .btn {
+    padding: 6px 12px;
+    font-size: 0.8125rem;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 80px 40px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+}
+
+.empty-state-icon {
+    font-size: 4rem;
+    margin-bottom: 24px;
+    opacity: 0.5;
+}
+
+.empty-state-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.empty-state-description {
+    color: #6b7280;
+    margin-bottom: 32px;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    
+    .page-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .table {
+        min-width: 700px;
+    }
+    
+    .table th,
+    .table td {
+        padding: 12px 8px;
+        font-size: 0.875rem;
+    }
+    
+    .product-actions-cell {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .product-actions-cell .btn {
+        width: 100%;
+        font-size: 0.75rem;
+    }
+    
+    .empty-state {
+        padding: 60px 20px;
+    }
+    
+    .empty-state-icon {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        padding: 16px;
+    }
+    
+    .page-header h2 {
+        font-size: 1.25rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 8px 4px;
+        font-size: 0.8125rem;
+    }
+    
+    .product-image-cell,
+    .product-image-placeholder-cell {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .empty-state {
+        padding: 40px 16px;
+    }
+}

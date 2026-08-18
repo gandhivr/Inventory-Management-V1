@@ -1,0 +1,577 @@
+/* Reports Page - Clean Professional Design */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f8fafc;
+    min-height: 100vh;
+    color: #1a202c;
+    line-height: 1.6;
+}
+
+/* Navigation */
+.navbar-custom {
+    background: white !important;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #2d3748 !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #4a5568 !important;
+}
+
+.nav-link:hover {
+    color: #667eea !important;
+}
+
+/* Back to Dashboard Button - Moved to header area */
+.back-to-dashboard {
+    background: #667eea;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    margin-bottom: 16px;
+}
+
+.back-to-dashboard:hover {
+    background: #5a67d8;
+    color: white;
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* Page Header */
+.reports-header {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    margin: 20px;
+    padding: 24px;
+}
+
+.reports-header h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 0.5rem;
+}
+
+.reports-header .lead {
+    font-size: 1rem;
+    color: #718096;
+    font-weight: 400;
+}
+
+/* Date Filter */
+.date-filter {
+    background: #f7fafc;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.date-filter input {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 0.875rem;
+}
+
+.date-filter .btn {
+    background: #667eea;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    padding: 8px 16px;
+    font-weight: 500;
+}
+
+.date-filter .btn:hover {
+    background: #5a67d8;
+}
+
+/* Statistics Cards - Clean Design */
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+    min-height: 80px;
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.stat-icon.orders {
+    background: #667eea;
+}
+
+.stat-icon.revenue {
+    background: #48bb78;
+}
+
+.stat-icon.avg {
+    background: #ed8936;
+}
+
+.stat-icon.customers {
+    background: #4299e1;
+}
+
+.stat-icon.items {
+    background: #9f7aea;
+}
+
+.stat-info {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.stat-info h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 4px;
+    line-height: 1.2;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.stat-info p {
+    color: #718096;
+    font-weight: 500;
+    margin: 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Report Cards */
+.report-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    margin-bottom: 24px;
+    transition: all 0.2s ease;
+}
+
+.report-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.report-header {
+    background: #667eea;
+    color: white;
+    padding: 20px 24px;
+}
+
+.report-header h5 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.report-header small {
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+.report-content {
+    padding: 24px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Status Cards */
+.status-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid #e2e8f0;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+}
+
+.status-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.status-card h4 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.status-card p {
+    font-weight: 500;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    font-size: 0.875rem;
+}
+
+.status-card small {
+    color: #718096;
+    font-weight: 400;
+}
+
+.status-pending {
+    border-color: #ffc107;
+}
+
+.status-pending h4 {
+    color: #ffc107;
+}
+
+.status-completed {
+    border-color: #48bb78;
+}
+
+.status-completed h4 {
+    color: #48bb78;
+}
+
+.status-processing {
+    border-color: #4299e1;
+}
+
+.status-processing h4 {
+    color: #4299e1;
+}
+
+.status-cancelled {
+    border-color: #f56565;
+}
+
+.status-cancelled h4 {
+    color: #f56565;
+}
+
+/* Export Options */
+.export-options {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    padding: 24px;
+    margin-top: 24px;
+}
+
+.export-options h6 {
+    color: #1a202c;
+    font-weight: 600;
+    margin-bottom: 16px;
+    font-size: 1rem;
+}
+
+.export-options .btn {
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding: 8px 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    font-size: 0.875rem;
+}
+
+/* Table Styling */
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    background: #f7fafc;
+    color: #4a5568;
+    font-weight: 600;
+    border: none;
+    padding: 12px 16px;
+    font-size: 0.875rem;
+}
+
+.table td {
+    padding: 12px 16px;
+    border-color: #e2e8f0;
+    vertical-align: middle;
+    font-size: 0.875rem;
+}
+
+.table tbody tr:hover {
+    background: #f7fafc;
+}
+
+/* Buttons */
+.btn-primary {
+    background: #667eea;
+    border: none;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background: #5a67d8;
+}
+
+.btn-outline-primary {
+    border-color: #667eea;
+    color: #667eea;
+    font-weight: 500;
+}
+
+.btn-outline-primary:hover {
+    background: #667eea;
+    border-color: #667eea;
+    color: white;
+}
+
+.btn-outline-success {
+    border-color: #48bb78;
+    color: #48bb78;
+    font-weight: 500;
+}
+
+.btn-outline-success:hover {
+    background: #48bb78;
+    border-color: #48bb78;
+    color: white;
+}
+
+.btn-outline-info {
+    border-color: #4299e1;
+    color: #4299e1;
+    font-weight: 500;
+}
+
+.btn-outline-info:hover {
+    background: #4299e1;
+    border-color: #4299e1;
+    color: white;
+}
+
+/* Icons */
+.fas, .far, .fab {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+}
+
+.alert-danger {
+    background: #fed7d7;
+    color: #c53030;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .back-to-dashboard {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        margin-bottom: 12px;
+    }
+    
+    .reports-header {
+        margin: 16px;
+        padding: 20px;
+    }
+    
+    .reports-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+        padding: 16px;
+        min-height: auto;
+    }
+    
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .stat-info {
+        width: 100%;
+    }
+    
+    .stat-info h3 {
+        font-size: 1.25rem;
+        white-space: normal;
+    }
+    
+    .stat-info p {
+        font-size: 0.7rem;
+        white-space: normal;
+    }
+    
+    .report-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .reports-header h1 {
+        font-size: 1.25rem;
+    }
+    
+    .export-options {
+        margin: 16px;
+        padding: 20px;
+    }
+    
+    .stat-card {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+    
+    .stat-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.875rem;
+    }
+    
+    .stat-info h3 {
+        font-size: 1.125rem;
+    }
+    
+    .stat-info p {
+        font-size: 0.65rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Additional fixes for text overflow */
+.container-fluid .row .col-lg-2,
+.container-fluid .row .col-md-4,
+.container-fluid .row .col-sm-6 {
+    min-width: 0;
+}
+
+.stat-card {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Ensure proper column sizing */
+@media (min-width: 576px) {
+    .col-sm-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
+@media (min-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 auto;
+        width: 33.333333%;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-lg-2 {
+        flex: 0 0 auto;
+        width: 16.666667%;
+    }
+}
+
+/* Print */
+@media print {
+    body {
+        background: white !important;
+    }
+    
+    .navbar-custom,
+    .btn,
+    .date-filter,
+    .back-to-dashboard {
+        display: none !important;
+    }
+    
+    .reports-header {
+        background: white !important;
+        color: #333 !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    .stat-card,
+    .report-card,
+    .export-options {
+        background: white !important;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+    
+    .report-header {
+        background: #f8f9fa !important;
+        color: #333 !important;
+    }
+}
