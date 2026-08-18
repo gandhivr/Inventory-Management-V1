@@ -1,226 +1,268 @@
-# Inventory Management System
+<div align="center">
 
-A comprehensive web-based inventory management system built with PHP and MySQL, featuring three distinct user roles: Admin, Supplier, and Buyer.
+# 📦 ProStock — Inventory Management System V1
 
-## Features
+[![PHP](https://img.shields.io/badge/PHP-7.4%20%7C%208.x-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
+[![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![SendGrid](https://img.shields.io/badge/SendGrid-API-336699?style=for-the-badge&logo=sendgrid&logoColor=white)](https://sendgrid.com/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
-### User Authentication
-- User registration and login system
-- Role-based access control (Admin, Supplier, Buyer)
-- Secure password hashing
-- Session management
+*A state-of-the-art, role-based e-commerce & inventory management platform featuring real-time analytics, automated multi-format report exports (PDF/CSV/Excel), email alerts, and guest browsing capabilities.*
 
-### Admin Features
-- Complete system dashboard with statistics
-- User management (add, edit, delete users)
-- Product management (view, edit, delete all products)
-- Order monitoring and revenue tracking
-- Low stock alerts
+[Key Features](#-key-features) •
+[User Roles](#-user-roles) •
+[Architecture](#-system-architecture) •
+[Quick Start](#-quick-start--installation) •
+[Exports](#-export--analytics-capabilities) •
+[Credentials](#-default-credentials)
 
-### Supplier Features
-- Add new products with images
-- Update product details and inventory
-- Delete own products
-- View personal product listings
+---
 
-### Buyer Features
-- Browse all available products
-- Add products to shopping cart
-- Update cart quantities
-- Complete checkout process
-- Order confirmation and history
+</div>
 
-## Technology Stack
+## 🌟 Overview
 
-- **Backend**: PHP 7.4+
-- **Database**: MySQL 5.7+
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Server**: Apache/Nginx with PHP support
+**ProStock Inventory Management System** is a complete end-to-end web application engineered for modern supply chain management, multi-role e-commerce, and product tracking. Built on **PHP** and **MySQL**, ProStock connects **Admins**, **Suppliers**, and **Buyers** into a unified ecosystem.
 
-## Installation
+Whether tracking stock levels, monitoring sales velocity, sending automated dispatch notices, or exporting comprehensive financial analytics, ProStock delivers high speed, responsive UI design, and maximum data reliability.
 
-### Prerequisites
-- Web server (Apache/Nginx)
-- PHP 7.4 or higher
-- MySQL 5.7 or higher
-- PDO PHP extension
+---
 
-### Setup Instructions
+## 🔥 Key Features
 
-1. **Clone or download the project files**
+### 🛡️ Role-Based Access Control (RBAC)
+- **Three Distinct User Portals**: Custom tailored dashboard views for Admin, Supplier, and Buyer.
+- **Secure Authentication**: Hashed passwords, protected session management, and role validation middleware.
+
+### 📊 Real-Time Analytics & Reporting
+- **Dynamic Dashboards**: Total revenue, low stock alerts, active orders, and sales velocity metrics.
+- **Visual Analytics**: Interactive data charts and performance breakdowns per product/supplier.
+
+### 📄 Multi-Format Export Engine
+- **PDF Generation**: High-resolution, professional PDF reports for analytics and order receipts.
+- **CSV & Excel Data Dumps**: Clean tabular data export for external spreadsheet analysis.
+
+### 🛒 E-Commerce & Guest Browsing
+- **Guest Browsing Mode**: Public access product catalog with instant search & filter capabilities.
+- **Shopping Cart Engine**: Dynamic item cart with stock level validation and real-time total calculation.
+
+### 📧 Transactional Email System
+- **SendGrid & SMTP Integration**: Automatic email receipts and status change notifications.
+- **Fallback Email Engine**: Auto-fallbacks for smooth operation across free hosting providers like InfinityFree.
+
+### 🖼️ Advanced Media & Lightbox Preview
+- **Multi-Format Image Support**: WebP, PNG, JPEG, and JFIF image uploads.
+- **Interactive Lightbox**: Full-screen image zoom and preview for product listings.
+
+---
+
+## 👥 User Roles & Workflow
+
+| Role | Key Capabilities | Primary Files |
+| :--- | :--- | :--- |
+| **👑 Admin** | System oversight, full user management, global product moderation, system-wide analytics, order management, PDF/CSV report generation. | `admin-dashboard.php`, `manage-users.php`, `manage-products.php`, `admin-orders.php`, `analytics.php` |
+| **🏬 Supplier** | Product creation & image uploads, inventory tracking, stock adjustments, supplier-specific sales performance analytics, PDF export. | `supplier-dashboard.php`, `add-product.php`, `update-product.php`, `supplier-orders.php`, `supplier-analytics.php` |
+| **🛒 Buyer** | Catalog browsing, product search/filter, shopping cart, checkout processing, order status tracking, profile management. | `index.php`, `product-list.php`, `cart.php`, `checkout.php`, `buyer-orders.php`, `buyer-profile.php` |
+
+---
+
+## 📐 System Architecture
+
+```mermaid
+flowchart TD
+    subgraph Clients["💻 Client Layer"]
+        G[Guest / Visitor]
+        B[Buyer]
+        S[Supplier]
+        A[Admin]
+    end
+
+    subgraph AppServer["⚙️ PHP Application Engine"]
+        AUTH[Auth & Session Manager]
+        ROUTER[Role Controller]
+        CART[Shopping Cart Engine]
+        INV[Inventory & Product Manager]
+        RPT[Analytics & Report Generator]
+        MAIL[SendGrid / SMTP Mailer]
+    end
+
+    subgraph Exports["📁 Multi-Format Exporter"]
+        PDF[PDF Exporter - FPDF/Dompdf]
+        CSV[CSV Exporter]
+        XLS[Excel Exporter]
+    end
+
+    subgraph DataStore["🗄️ Database & Storage"]
+        DB[(MySQL Database)]
+        MEDIA[Uploads Directory /products/]
+    end
+
+    G -->|Browse Catalog| ROUTER
+    B -->|Order & Checkout| AUTH
+    S -->|Upload Stock & View Sales| AUTH
+    A -->|Manage System & Analytics| AUTH
+
+    AUTH --> ROUTER
+    ROUTER --> CART
+    ROUTER --> INV
+    ROUTER --> RPT
+
+    INV --> MEDIA
+    RPT --> Exports
+    ROUTER --> MAIL
+    
+    CART <--> DB
+    INV <--> DB
+    AUTH <--> DB
+```
+
+---
+
+## 🛠️ Technology Stack
+
+| Component | Technology / Library | Description |
+| :--- | :--- | :--- |
+| **Backend** | PHP 7.4 / 8.x | Native PHP with PDO database abstraction layer |
+| **Database** | MySQL 5.7+ / MariaDB | Relational schema with foreign key constraints |
+| **Frontend** | HTML5, CSS3, JavaScript (ES6+) | Vanilla responsive UI, Custom Glassmorphism & Modern themes |
+| **Emails** | SendGrid API / SMTP | Multi-provider mail engine for transactional notifications |
+| **Export Engines** | FPDF / Custom CSV Writers | Server-side PDF & spreadsheet generation |
+| **Media Handling** | PHP GD / ImageMagick | Automated image upload processing (PNG, JPG, WebP, JFIF) |
+
+---
+
+## ⚡ Quick Start & Installation
+
+### 1. Prerequisites
+Ensure you have the following installed on your system:
+- **Web Server**: Apache or Nginx (XAMPP / WAMP / MAMP recommended for local dev)
+- **PHP**: Version 7.4 or 8.x (with `pdo_mysql` & `curl` extensions enabled)
+- **Database**: MySQL 5.7+ or MariaDB
+
+### 2. Clone the Repository
+```bash
+git clone https://github.com/gandhivr/Inventory-Management-V1.git
+cd Inventory-Management-V1
+```
+
+### 3. Database Setup
+1. Open **phpMyAdmin** or your MySQL command line client.
+2. Create a new database named `inventory_management`:
+   ```sql
+   CREATE DATABASE inventory_management;
+   ```
+3. Import the SQL schema file located in the `database/` folder:
    ```bash
-   git clone <repository-url>
-   cd inventory-management-system
+   mysql -u root -p inventory_management < database/inventory_management.sql
    ```
 
-2. **Database Setup**
-   - Create a MySQL database named `inventory_management`
-   - Import the database schema:
-   ```bash
-   mysql -u root -p inventory_management < database/schema.sql
-   ```
-
-3. **Configure Database Connection**
-   - Edit `config/database.php`
-   - Update the database credentials:
+### 4. Configuration
+1. **Database Config**: Edit [`config/database.php`](file:///e:/inventory-management-2/config/database.php):
    ```php
    $host = 'localhost';
    $dbname = 'inventory_management';
-   $username = 'your_username';
-   $password = 'your_password';
+   $username = 'root'; // Your DB username
+   $password = '';     // Your DB password
    ```
 
-4. **Set Directory Permissions**
+2. **Email Config (Optional)**: Edit [`config/email-sendgrid.php`](file:///e:/inventory-management-2/config/email-sendgrid.php) or set the environment variable:
    ```bash
-   chmod 755 uploads/
-   chmod 755 uploads/products/
+   export SENDGRID_API_KEY="your-sendgrid-api-key"
    ```
 
-5. **Web Server Configuration**
-   - Point your web server document root to the project directory
-   - Ensure PHP is properly configured
-   - Enable URL rewriting if needed
-
-## Default Login Credentials
-
-### Admin Account
-- **Username**: admin
-- **Password**: admin123
-
-### Creating Other Accounts
-- Supplier and Buyer accounts can be created through the registration page
-- Admin can also create accounts through the user management interface
-
-## File Structure
-
-```
-inventory-management-system/
-├── config/
-│   └── database.php          # Database configuration
-├── css/
-│   └── style.css            # Main stylesheet
-├── database/
-│   └── schema.sql           # Database schema
-├── js/
-│   └── script.js            # JavaScript functionality
-├── uploads/
-│   └── products/            # Product images directory
-├── index.php                # Homepage
-├── login.php               # Login page
-├── register.php            # Registration page
-├── dashboard.php           # Admin dashboard
-├── product-list.php        # Product listing
-├── add-product.php         # Add product (Supplier)
-├── cart.php               # Shopping cart (Buyer)
-├── checkout.php           # Checkout process
-└── README.md              # This file
+### 5. Launch the Application
+Start your Apache server, place the files in your web root (`htdocs` or `www`), and open your browser:
+```text
+http://localhost/Inventory-Management-V1/
 ```
 
-## Security Features
+---
 
-- Password hashing using PHP's `password_hash()`
-- SQL injection prevention with prepared statements
-- Input validation and sanitization
-- Session-based authentication
-- Role-based access control
-- File upload validation
+## 🔑 Default Credentials
 
-## Usage
+> [!IMPORTANT]
+> Change default passwords after your initial setup in production environments.
 
-### For Suppliers
-1. Register as a Supplier
-2. Login to access supplier dashboard
-3. Add products with details and images
-4. Manage inventory and update product information
+| Role | Username / Email | Password | Dashboard Link |
+| :--- | :--- | :--- | :--- |
+| 👑 **Admin** | `admin` | `admin123` | [Admin Dashboard](file:///e:/inventory-management-2/admin-dashboard.php) |
+| 🏬 **Supplier** | Create via `/register.php` (Select Role: Supplier) | Your Password | [Supplier Dashboard](file:///e:/inventory-management-2/supplier-dashboard.php) |
+| 🛒 **Buyer** | Create via `/register.php` (Select Role: Buyer) | Your Password | [Buyer Dashboard](file:///e:/inventory-management-2/buyer-dashboard.php) |
 
-### For Buyers
-1. Register as a Buyer
-2. Browse available products
-3. Add items to cart
-4. Complete checkout process
+---
 
-### For Admins
-1. Login with admin credentials
-2. Access admin dashboard for system overview
-3. Manage users and products
-4. Monitor orders and system activity
+## 📊 Export & Analytics Capabilities
 
-## Database Schema
+| Feature | PDF Export | CSV Export | Excel Export | Target Audience |
+| :--- | :---: | :---: | :---: | :--- |
+| **Sales & Revenue Reports** | ✅ | ✅ | ✅ | Admin & Financial Teams |
+| **Inventory & Stock Audit** | ✅ | ✅ | ❌ | Admin & Suppliers |
+| **Supplier Sales Breakdown** | ✅ | ✅ | ❌ | Suppliers |
+| **Order History Receipts** | ✅ | ❌ | ❌ | Admin & Buyers |
 
-### Users Table
-- `id` (Primary Key)
-- `username` (Unique)
-- `email` (Unique)
-- `password` (Hashed)
-- `role` (admin/supplier/buyer)
-- `created_at`
+---
 
-### Products Table
-- `id` (Primary Key)
-- `name`
-- `description`
-- `price`
-- `image`
-- `supplier_id` (Foreign Key)
-- `stock_quantity`
-- `created_at`
+## 📂 Project Structure
 
-### Cart Table
-- `id` (Primary Key)
-- `user_id` (Foreign Key)
-- `product_id` (Foreign Key)
-- `quantity`
-- `created_at`
+```text
+Inventory-Management-V1/
+├── 📁 config/                       # Application configuration
+│   ├── database.php                # Database connection settings
+│   ├── email-sendgrid.php          # SendGrid API configuration
+│   └── email-smtp.php              # Fallback SMTP configuration
+├── 📁 css/                          # Stylesheets
+│   ├── base.css                    # Common layout design system
+│   ├── admin-dashboard.css         # Admin custom theme
+│   ├── buyer-dashboard.css         # Buyer interface styling
+│   ├── supplier-dashboard.css      # Supplier portal styling
+│   └── image-lightbox.css          # Image preview modal styles
+├── 📁 database/                     # SQL Scripts & Database Dumps
+│   ├── inventory_management.sql    # Primary DB schema & sample data
+│   ├── create-admin-user.sql       # Admin creation script
+│   └── clear-all-data.sql          # Test data reset helper
+├── 📁 js/                           # JavaScript Modules
+│   ├── dashboard-common.js         # Shared UI logic
+│   └── image-lightbox.js           # Image lightbox zoom handler
+├── 📁 uploads/                      # Product Media Assets
+│   └── 📁 products/                # Product images (PNG, JPG, WebP, JFIF)
+├── 📄 index.php                     # Public landing page & guest catalog
+├── 📄 login.php                     # Authentication entry point
+├── 📄 register.php                  # User registration page
+├── 📄 admin-dashboard.php           # Admin control panel
+├── 📄 supplier-dashboard.php        # Supplier inventory panel
+├── 📄 buyer-dashboard.php           # Buyer account portal
+├── 📄 manage-products.php           # Product moderation interface
+├── 📄 manage-users.php              # User role & status management
+├── 📄 analytics.php                 # System sales & revenue charts
+├── 📄 reports.php                   # Multi-format report builder
+└── 📄 README.md                     # Project documentation
+```
 
-### Orders Table
-- `id` (Primary Key)
-- `user_id` (Foreign Key)
-- `total_amount`
-- `status`
-- `created_at`
+---
 
-### Order Items Table
-- `id` (Primary Key)
-- `order_id` (Foreign Key)
-- `product_id` (Foreign Key)
-- `quantity`
-- `price`
+## 🤝 Contributing
 
-## Troubleshooting
+Contributions are always welcome! If you'd like to improve ProStock:
+1. Fork the Repository
+2. Create a Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Common Issues
+---
 
-1. **Database Connection Error**
-   - Check database credentials in `config/database.php`
-   - Ensure MySQL service is running
-   - Verify database exists
+## 📄 License
 
-2. **Image Upload Issues**
-   - Check `uploads/products/` directory permissions
-   - Ensure directory exists and is writable
-   - Verify PHP file upload settings
+Distributed under the MIT License. See `LICENSE` for more information.
 
-3. **Session Issues**
-   - Check PHP session configuration
-   - Ensure session directory is writable
-   - Clear browser cookies if needed
+---
 
-### Error Logs
-- Check PHP error logs for detailed error information
-- Enable error reporting in development environment
+<div align="center">
 
-## Contributing
+**Developed with ❤️ by [Vraj Gandhi](https://github.com/gandhivr)**  
+*For questions, issues, or custom enhancements, please open an issue in the repository.*
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## Support
-
-For support and questions, please create an issue in the repository or contact the development team.
+</div>
